@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+:root {
+  --background: #000;
+  --text-color: #FFF;
+  --button: #8257E5;
+  --border: #29292E;
+  --border-menu-mobile: #A8A8B3;
+  --text-color-menu-mobile: #E1E1E6;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-color-menu-mobile);
+  font-family: 'Manrope', sans-serif;
+}
+.btn {
+  background-color: transparent;
+  border: 1px solid var(--button);
+  border-radius: 6px;
+  color: var(--text-color);
+  font-family: 'Manrope';
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  padding: 10px 30px;
+  text-transform: uppercase;
+ 
+  display: flex;
+  align-items: center;
+  transition: .4s;
+}
+.btn:hover, .btn:focus {
+  background-color: var(--button);
+}
+.btn.desktop {
+  display: none;
+}
+.btn.mobile {
+  margin: 88px 0 98px 0;
+}
+.btn img {
+  margin-left: 10px;
+}
+/* header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+header .logo {
+  padding: 26px 0 25.72px 37px;
+}
+.icon-menu {
+  margin-right: 25px;
+  padding: 10px;
+  cursor: pointer;
+}
+.navigation {
+  display: none;  
+  position: absolute;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 86px;
+}
+.navigation.open {
+  display: block;
+}
+ul {
+  list-style: none;
+}
+ul li { 
+  display: flex; 
+}
+ul li a {
+  color: var(--border-menu-mobile);
+  display: block;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.563rem;
+  padding: 18px 0 14px 31px;
+  text-decoration: none;
+  width: 100%;
+  border-bottom: 1px solid var(--border); 
+  transition: .4s;
+}
+ul li:focus-within a {
+  color: var(--text-color-menu-mobile);
+  font-weight: 700;
+  padding-left: 26px;
+}
+.marker { 
+  visibility: hidden;
+  transition: .4s;
+}
+ul li:focus-within .marker {
+  visibility: visible;
+  background-color: var(--button);
+  height: 56px;
+  width: 5px;
+}
+/* main */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+main .description {
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 41px;
+  letter-spacing: 0.02em;
+  padding: 10px;
+  margin-top: 88.5px;
+}
+main .title, 
+main .subtitle {
+  font-weight: 700;
+  line-height: 4.25rem;
+  font-size: 3.125rem;
+  letter-spacing: -0.03em;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+main .title {
+  color: var(--text-color);
+}
+main .subtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 6px;
+  -webkit-text-stroke: 1px var(--button);
+  -webkit-text-fill-color: transparent;
+}
+.main-image {
+  position: relative;
+  width: 100%;
+} 
+.img-coffee {
+  width: 100vw;
+  margin-top: 25px;
+}
+.blur {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: url('./assets/blur-mobile.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+.blur-left,
+.blur-right {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  body {
+    overflow-x: hidden;
+  }
+  .icon-menu,
+  .btn.mobile,
+  .description,
+  .blur {
+    display: none;
+  }
+  /* header */
+  header {
+    justify-content: space-around;
+    border-bottom: 0;
+  }
+  .navigation {
+    display: block;
+    background: transparent;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+  }
+  ul, ul li {
+    display: inline-block;
+  }
+  ul li a {
+    color: var(--text-color);
+    border-bottom: 0;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.188rem;
+    letter-spacing: 0.02em;
+  }
+  ul li:focus-within a {
+    font-size: 400;
+    text-decoration: underline;
+    padding-left: 31px;
+  }
+  .btn.desktop {
+    display: block;
+  }
+  /* main */
+  main .title {
+    margin-top: 40px;
+  }
+  main .subtitle {
+    margin: 0;
+  }
+  main .title,
+  main .subtitle {
+    font-size: 5rem;
+    line-height: 6.813rem;
+  }
+  .img-coffee {
+    max-width: 65vw;
+    margin: 0;
+    position: relative;
+    top: 5vh;
+  }
+  .blur-left, 
+  .blur-right {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+  }
+  .blur-left {
+    background-image: url('./assets/blur-1.png');
+    left: -33vw;
+    bottom: -5vh;
+    width: 100vw;
+    height: 100vh;
+  }
+  .blur-right {
+    background-image: url('./assets/blur-2.png');
+    top: -25vh;
+    right: 0;
+    width: 50vw;
+    height: 125vh;
+  }
+}
